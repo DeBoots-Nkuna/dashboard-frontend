@@ -5,9 +5,10 @@ import axios from 'axios';
 import mammoth from 'mammoth';
 
 export default function UploadData() {
-  //state to hold parsed data and any message
-  const [parsedData, setParsedData] = useState();
+  //state to hold parsed data and any message and server response from the backend
+  const [parsedData, setParsedData] = useState({});
   const [message, setMessage] = useState('');
+  const [serverResponse, setServerResponse] = useState(null);
 
   //function to handle file selection and parsing process
   const handleFileChange = async (e) => {
@@ -56,7 +57,7 @@ export default function UploadData() {
             const cellText = cells[1].textContent;
 
             //IF STATEMENT - INDICATOR FOOTPRINT
-            if (fieldName === 'Indicator Footprint-ck') {
+            if (fieldName === 'Indicator Footprint') {
               //creating a temp div to help extract text with line breaks
               const tempDiv = document.createElement('div');
               tempDiv.innerHTML = cellContent;
@@ -88,7 +89,7 @@ export default function UploadData() {
             }
 
             // IF - INDICATOR THEMATIC AREAS
-            else if (fieldName === 'Indicator thematic areas-ck') {
+            else if (fieldName === 'Indicator thematic areas') {
               //parsing the checkbox values
               const thematicAreas = [];
               const tempDiv = document.createElement('div');
@@ -120,7 +121,7 @@ export default function UploadData() {
             }
 
             // IF - INDICATOR CATEGORY
-            else if (fieldName === 'Indicator category-ck') {
+            else if (fieldName === 'Indicator category') {
               //parsing the checkbox values
               const category = [];
               const tempDiv = document.createElement('div');
@@ -152,7 +153,7 @@ export default function UploadData() {
             }
 
             // if - TYPE OF DATA
-            else if (fieldName === 'Type of Data-ck') {
+            else if (fieldName === 'Type of Data') {
               //parsing the checkbox values
               const typeOfData = [];
               const tempDiv = document.createElement('div');
@@ -184,7 +185,7 @@ export default function UploadData() {
             }
 
             // IF- GROUPS SUPPORTED WITH DATA
-            else if (fieldName === 'Groups supported with data-ck') {
+            else if (fieldName === 'Groups supported with data') {
               //parsing the checkbox values
               const supportedGroups = [];
               const tempDiv = document.createElement('div');
@@ -216,7 +217,7 @@ export default function UploadData() {
             }
 
             // IF- PURPOSE OF DATA
-            else if (fieldName === 'Purpose of data-ck') {
+            else if (fieldName === 'Purpose of data') {
               //parsing the checkbox values
               const dataPurpose = [];
               const tempDiv = document.createElement('div');
@@ -248,7 +249,7 @@ export default function UploadData() {
             }
 
             // IF- TARGET AUDIENCE
-            else if (fieldName === 'Target audience-ck') {
+            else if (fieldName === 'Target audience') {
               //parsing the checkbox values
               const targetAudience = [];
               const tempDiv = document.createElement('div');
@@ -280,7 +281,7 @@ export default function UploadData() {
             }
 
             // IF- DATA REPLICABILITY
-            else if (fieldName === 'Data replicability-ck') {
+            else if (fieldName === 'Data replicability') {
               //parsing the checkbox values
               const dataReplicability = [];
               const tempDiv = document.createElement('div');
@@ -312,7 +313,7 @@ export default function UploadData() {
             }
 
             // IF- PRE-ANALYSIS
-            else if (fieldName === 'Pre-analysis-ck') {
+            else if (fieldName === 'Pre-analysis') {
               //parsing the checkbox values
               const preAnalysis = [];
               const tempDiv = document.createElement('div');
@@ -344,7 +345,7 @@ export default function UploadData() {
             }
 
             // IF- DATA TYPE
-            else if (fieldName === 'Data type-ck') {
+            else if (fieldName === 'Data type') {
               //parsing the checkbox values
               const dataType = [];
               const tempDiv = document.createElement('div');
@@ -376,7 +377,7 @@ export default function UploadData() {
             }
 
             // IF- DATA ANALYSIS
-            else if (fieldName === 'Data analysis-ck') {
+            else if (fieldName === 'Data analysis') {
               //parsing the checkbox values
               const dataAnalysis = [];
               const tempDiv = document.createElement('div');
@@ -408,7 +409,7 @@ export default function UploadData() {
             }
 
             // IF- RESULT VALIDATION
-            else if (fieldName === 'Result Validation-ck') {
+            else if (fieldName === 'Result Validation') {
               //parsing the checkbox values
               const resultValidation = [];
               const tempDiv = document.createElement('div');
@@ -440,7 +441,7 @@ export default function UploadData() {
             }
 
             // IF- FREQUENCY
-            else if (fieldName === 'Frequency-ck') {
+            else if (fieldName === 'Frequency') {
               //parsing the checkbox values
               const frequency = [];
               const tempDiv = document.createElement('div');
@@ -472,7 +473,7 @@ export default function UploadData() {
             }
 
             // IF- DATA COMMUNICATED IN THE PUBLIC SPACE
-            else if (fieldName === 'data communicated in the public space-ck') {
+            else if (fieldName === 'data communicated in the public space') {
               //parsing the checkbox values
               const dataCommunicated = [];
               const tempDiv = document.createElement('div');
@@ -504,7 +505,7 @@ export default function UploadData() {
             }
 
             // IF- PUBLIC SHARING CONSENT
-            else if (fieldName === 'Public sharing consent-ck') {
+            else if (fieldName === 'Public sharing consent') {
               //parsing the checkbox values
               const publicSharing = [];
               const tempDiv = document.createElement('div');
@@ -531,7 +532,7 @@ export default function UploadData() {
             }
 
             // IF- FREQUENT INFORMATION UPDATES
-            else if (fieldName === 'Frequent information updates-ck') {
+            else if (fieldName === 'Frequent information updates') {
               //parsing the checkbox values
               const informationUpdates = [];
               const tempDiv = document.createElement('div');
@@ -558,7 +559,7 @@ export default function UploadData() {
             }
 
             // IF- WEB SCRAPPING APPROVAL
-            else if (fieldName === 'WebScrapping approval-ck') {
+            else if (fieldName === 'WebScrapping approval') {
               //parsing the checkbox values
               const webScrapping = [];
               const tempDiv = document.createElement('div');
@@ -585,7 +586,7 @@ export default function UploadData() {
             }
 
             // IF- DATA DASHBOARD USAGE
-            else if (fieldName === 'Dashboard usage-ck') {
+            else if (fieldName === 'Dashboard usage') {
               //parsing the checkbox values
               const dashboardUsage = [];
               const tempDiv = document.createElement('div');
@@ -625,15 +626,38 @@ export default function UploadData() {
     }
   };
 
+  //method to transform data
+  const transformData = (data) => {
+    const newData = {};
+    Object.keys(data).forEach((key) => {
+      let value = data[key];
+
+      //if the value is an array, convert it to json string
+      if (Array.isArray(value)) {
+        value = JSON.stringify(value);
+      }
+      newData[key] = value;
+    });
+
+    return newData;
+  };
+
   //method to send the parsed data to springboot backend
   const handleSubmit = async () => {
     try {
+      //getting transformed data
+      const modifiedData = transformData(parsedData);
       //POST the JSON object to the backend endpoint
       const response = await axios.post(
-        'http://localhost:8080/api/data',
-        parsedData
+        'http://localhost:8080/api/indicators',
+        modifiedData
       );
-      setMessage(response.data);
+      //logging response to the console
+      console.log('Response from the server: ', response.data);
+
+      //storing the response to the state in order to display to the page
+      setServerResponse(response.data);
+      setMessage('Data saved successfully');
     } catch (error) {
       console.error('Error sending data: ', error);
       setMessage('Error sending data to the backend.');
@@ -642,13 +666,40 @@ export default function UploadData() {
 
   return (
     <>
-      <div>
-        <h2>Upload and Parse Word document</h2>
-        <input type="file" accept=".docx" onChange={handleFileChange} />
-        <button onClick={handleSubmit}>Submit Parsed Data</button>
-        <h3>Parsed Data</h3>
-        <pre>{JSON.stringify(parsedData, null, 2)}</pre>
-        {message && <p>{message}</p>}
+      <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+        <h2 className="text-2xl font-semibold text-center mb-4">
+          Upload and Parse Indicator word Document
+        </h2>
+        <input
+          type="file"
+          accept=".docx"
+          onChange={handleFileChange}
+          className="border px-4 py-2 rounded-lg mb-4 w-full text-gray-700 text-sm file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-teal-600 file:text-white hover:file:bg-teal-700"
+        />
+        <button
+          onClick={handleSubmit}
+          className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 mb-4"
+        >
+          Submit Parsed Data
+        </button>
+        {message && (
+          <p className="text-green-600 text-center text-lg my-2">{message}</p>
+        )}
+        <h3 className="text-xl font-bold mt-2">Parsed Data</h3>
+        <div className="overflow-auto p-2 border border-gray-200 rounded bg-gray-50 whitespace-pre-wrap break-words mb-4">
+          <pre>{JSON.stringify(parsedData, null, 2)}</pre>
+        </div>
+
+        {serverResponse && (
+          <div className="mt-4">
+            <h2 className="text-xl font-bold mb-2">
+              Response from the backend
+            </h2>
+            <div className="overflow-auto p-2 border border-gray-200 rounded bg-gray-50 whitespace-pre-wrap break-words">
+              <pre>{JSON.stringify(serverResponse, null, 2)}</pre>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
