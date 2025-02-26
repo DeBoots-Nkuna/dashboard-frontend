@@ -23,7 +23,9 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${outfit.className} ${lato.className}`}>
       <body className="min-h-screen flex flex-col">
         {/* navbar for home page */}
-        <NavBar />
+        <header>
+          <NavBar />
+        </header>
         {/* main content */}
         <main className="flex-grow">{children}</main>
 

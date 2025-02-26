@@ -44,16 +44,9 @@ export default function ResourcePage() {
       </div>
 
       {/* card section */}
-      <ResourceCardClient activeFilter={activeFilter} />
-
-      {/* indicator card displayed only when data is fetched  */}
-      {/* <Suspense
-        fallback={
-          <p className="text-center animate-loading">Loading Indicators...</p>
-        }
-      >
-        <ResourceCard />
-      </Suspense> */}
+      <div className="h-full">
+        <ResourceCardClient activeFilter={activeFilter} />
+      </div>
 
       {/* pagination section */}
       {/* <div className="flex justify-center mt-6">

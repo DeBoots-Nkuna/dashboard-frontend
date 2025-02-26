@@ -20,9 +20,14 @@ export default {
           '50%': { color: '#b89b84' },
           '100%': { color: '#e9e9e9' },
         },
+        bounceColor: {
+          '0%, 100%': { transform: 'scale(1)', backgroundColor: '#14b8a6' },
+          '50%': { transform: 'scale(1.2)', backgroundColor: '#0d9488' },
+        },
       },
       animation: {
         loading: 'loading 1.2s ease-in-out infinite',
+        bounceColor: 'bounceColor 1.2s ease-in-out infinite',
       },
     },
   },

@@ -38,7 +38,7 @@ export default function ResourceCardClient({ activeFilter }) {
       const response = await axios.get(url);
 
       //adding artificial delay for smoother loading UX
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1200));
 
       //logging data response returned
       const data =

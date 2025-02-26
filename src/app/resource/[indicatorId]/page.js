@@ -17,7 +17,7 @@ export default async function IndicatorDetailedPage({ params }) {
   }
 
   //adding artificial delay for smoother loading UX
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
   const indicator = await res.json();
 

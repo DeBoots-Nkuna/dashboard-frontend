@@ -670,12 +670,28 @@ export default function UploadData() {
         <h2 className="text-2xl font-semibold text-center mb-4">
           Upload and Parse Indicator word Document
         </h2>
-        <input
-          type="file"
-          accept=".docx"
-          onChange={handleFileChange}
-          className="border px-4 py-2 rounded-lg mb-4 w-full text-gray-700 text-sm file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-teal-600 file:text-white hover:file:bg-teal-700"
-        />
+        {/* div for download template doc link */}
+        <div className="mb-4 text-center">
+          <a
+            href="/template.docx"
+            download
+            className="text-teal-600 underline inline-block mb-2"
+          >
+            Download Template Doc
+          </a>
+        </div>
+
+        {/* div for file upload */}
+
+        <div className="mb-4">
+          <input
+            type="file"
+            accept=".docx"
+            onChange={handleFileChange}
+            className="border px-4 py-2 rounded-lg mb-4 w-full text-gray-700 text-sm file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:bg-teal-600 file:text-white hover:file:bg-teal-700"
+          />
+        </div>
+
         <button
           onClick={handleSubmit}
           className="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 mb-4"

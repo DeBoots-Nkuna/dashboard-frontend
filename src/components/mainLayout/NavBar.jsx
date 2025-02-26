@@ -11,7 +11,7 @@ export default function NavBar() {
           {/* Left logo title */}
           <div className="font-bold text-xl">
             <Link href="/">
-              <Image src={logoImg} width={150} height={150} />{' '}
+              <Image src={logoImg} width={150} height={150} />
             </Link>
           </div>
 

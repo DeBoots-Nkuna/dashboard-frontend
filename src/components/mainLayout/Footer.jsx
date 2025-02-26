@@ -2,7 +2,7 @@
 
 export default function Footer() {
   return (
-    <footer className="bg-customNavyTeal text-white py-4 mt-4">
+    <footer className="bg-customNavyTeal text-white py-4 h-20">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <p className="text-sm">&copy; 2025 Website. All rights reserved</p>
 
