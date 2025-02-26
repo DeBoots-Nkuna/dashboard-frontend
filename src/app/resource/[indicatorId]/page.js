@@ -30,90 +30,96 @@ export default async function IndicatorDetailedPage({ params }) {
   }
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      {/* heading  */}
-      <h1 className="text-3xl font-bold mb-6">
+    <div className="container mx-auto py-12 px-6">
+      {/* heading */}
+      <h1 className="text-4xl font-extrabold mb-8 text-center bg-gradient-to-r from-customNavyTeal to-customTealWhite bg-clip-text text-transparent">
         {indicator.indicatorShortName}
       </h1>
 
       {/* image placeholder */}
-      <div className="relative w-1/2 h-64 bg-gray-300 mb-8 mx-auto">
+      <div className="relative w-full md:w-1/2 h-64 bg-gray-300 mb-10 mx-auto shadow-lg rounded-lg overflow-hidden">
         {indicator.indicatorImage ? (
           <Image
             src={indicator.indicatorImage}
-            alt="indicator-image"
+            alt="Indicator Image"
             fill
             unoptimized
             className="object-cover"
           />
         ) : (
-          <Image
+          <image
             src={defaultImg}
-            alt="placeholder"
+            alt="default image placeholder"
             fill
             className="object-cover"
           />
         )}
       </div>
 
-      {/* organisation details */}
+      {/* details grid */}
+      <div className="grid grid-cols-1 md:grid-cols gap-8 mb-10">
+        {/* organisation details */}
+        <div className="p-6 border border-gray-200 rounded-lg shadow-sm">
+          <h2 className="text-2xl font-semibold mb-4 text-teal-600">
+            Organisation Details
+          </h2>
+          <p className="mb-2">
+            <span className="font-semibold">Full Name:</span>{' '}
+            {indicator.organisationFullName}
+          </p>
+          <p className="mb-2">
+            <span className="font-semibold">Contact Name:</span>{' '}
+            {indicator.organisationContactName}
+          </p>
+          <p className="mb-2">
+            <span className="font-semibold">Email:</span>{' '}
+            {indicator.organisationContactEmail}
+          </p>
+          <p className="mb-2">
+            <span className="font-semibold">Website:</span>{' '}
+            <a
+              href={indicator.organisationWebsite}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-500 hover:underline"
+            >
+              {indicator.organisationWebsite}
+            </a>
+          </p>
+        </div>
 
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">Organisation Details</h2>
-        <p className="mb-1">
-          <span className="font-semibold">Full Name:</span>{' '}
-          {indicator.organisationFullName}
-        </p>
-        <p className="mb-1">
-          <span className="font-semibold">Contact Name:</span>{' '}
-          {indicator.organisationContactName}
-        </p>
-        <p className="mb-1">
-          <span className="font-semibold">Email:</span>{' '}
-          {indicator.organisationContactEmail}
-        </p>
-        <p className="mb-1">
-          <span className="font-semibold">Website:</span>{' '}
-          <a
-            href={indicator.organisationWebsite}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-teal-600 hover:underline"
-          >
-            {indicator.organisationWebsite}
-          </a>
-        </p>
+        {/* indicator details */}
+        <div className="p-6 border border-gray-200 rounded-lg shadow-sm">
+          <h2 className="text-2xl font-semibold mb-4 text-teal-600">
+            Indicator Details
+          </h2>
+          <p className="mb-2">
+            <span className="font-semibold">Description:</span>{' '}
+            {indicator.indicatorDescription}
+          </p>
+          <p className="mb-2">
+            <span className="font-semibold">Indicator Footprint:</span>{' '}
+            {Array.isArray(indicatorFootprint)
+              ? indicatorFootprint.join(', ')
+              : indicator.indicatorFootprint}
+          </p>
+          <p className="mb-2">
+            <span className="font-semibold">Start Year:</span>{' '}
+            {indicator.indicatorYearStart}
+          </p>
+        </div>
       </div>
 
-      {/* indicator details */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">Indicator Details</h2>
-        <p className="mb-1">
-          <span className="font-semibold">Description:</span>{' '}
-          {indicator.indicatorDescription}
-        </p>
-        <p className="mb-1">
-          <span className="font-semibold">Indicator Footprint:</span>{' '}
-          {Array.isArray(indicatorFootprint)
-            ? indicatorFootprint.join(', ')
-            : indicator.indicatorFootprint}
-        </p>
-        <p className="mb-1">
-          <span className="font-semibold ">Start Year:</span>{' '}
-          {indicator.indicatorYearStart}
-        </p>
-      </div>
-
-      {/* Methodology & Communication */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold mb-2">
+      {/* methodology and communication */}
+      <div className="p-6 border border-gray-200 rounded-lg shadow-sm">
+        <h2 className="text-2xl font-semibold mb-4 text-teal-600">
           Methodology & Communication
         </h2>
-        <p className="mb-1">
+        <p className="mb-4">
           <span className="font-semibold">Methodology:</span>{' '}
           {indicator.methodology}
         </p>
-        <p className="mb-1 mt-6">
+        <p className="mb-0">
           <span className="font-semibold">Communication Details:</span>{' '}
           {indicator.communicationDetails}
         </p>

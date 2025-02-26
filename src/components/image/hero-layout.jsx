@@ -12,8 +12,10 @@ export default function HeroLayout() {
 
         {/* Right Column: Text & Buttons */}
         <div className="md:w-1/2 w-full mt-6 md:mt-0 md:pl-8">
-          <h1 className="text-3xl font-bold mb-4">Heading</h1>
-          <p className="mb-6">
+          <h1 className="text-3xl font-bold mb-4 text-customNavyTeal">
+            Heading
+          </h1>
+          <p className="mb-6 text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
             nisi tempora sint id accusantium, nam enim ratione, quibusdam eius
             fugit ex est molestiae recusandae sit aliquam iusto aperiam quam?
