@@ -8,12 +8,16 @@ export default async function IndicatorDetailedPage({ params }) {
   //fetching the indicator details from the backend
 
   const res = await fetch(
-    `http://localhost:8080/api/indicators/${indicatorId}`
+    `http://localhost:8080/api/indicators/${indicatorId}`,
+    { cache: 'no-store' }
   );
 
   if (!res.ok) {
-    throw new Error('Failed to fetch requested Indicator details.');
+    throw new Error('Failed to fetch Indicator details.');
   }
+
+  //adding artificial delay for smoother loading UX
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const indicator = await res.json();
 

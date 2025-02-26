@@ -1,8 +1,20 @@
-import ResourceCard from '@/components/resource/ResourceCard';
+'use client';
 
-import { Suspense } from 'react';
+import ResourceCardClient from '@/components/resource/ResourceCardClient';
+import React, { useState } from 'react';
 
 export default function ResourcePage() {
+  const [activeFilter, setActiveFilter] = useState('Display All');
+  //filter buttons
+  const filters = [
+    'Display all',
+    'Agriculture',
+    'Climate change',
+    'Leadership',
+    'Biodiversity',
+    'Nutrition',
+    'Fisheries',
+  ];
   return (
     <section className="container mx-auto py-8 px-4">
       {/* heading and filter buttons */}
@@ -11,38 +23,37 @@ export default function ResourcePage() {
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem
         nesciunt provident doloremque nobis amet molestiae? Ut beatae
       </p>
+
+      {/* filter buttons */}
+
+      {/* Filter Buttons */}
       <div className="mb-6 space-x-2">
-        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
-          Display All
-        </button>
-        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
-          Agriculture
-        </button>
-        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
-          Leadership
-        </button>
-        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
-          Climate Change
-        </button>
-        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
-          Policy Making
-        </button>
-        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
-          Advocacy
-        </button>
-        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
-          Policy Research
-        </button>
+        {filters.map((filter) => (
+          <button
+            key={filter}
+            className={`px-3 py-1 rounded ${
+              activeFilter === filter
+                ? 'bg-teal-600 text-white'
+                : 'bg-gray-200 text-gray-700'
+            }`}
+            onClick={() => setActiveFilter(filter)}
+          >
+            {filter}
+          </button>
+        ))}
       </div>
 
+      {/* card section */}
+      <ResourceCardClient activeFilter={activeFilter} />
+
       {/* indicator card displayed only when data is fetched  */}
-      <Suspense
+      {/* <Suspense
         fallback={
           <p className="text-center animate-loading">Loading Indicators...</p>
         }
       >
         <ResourceCard />
-      </Suspense>
+      </Suspense> */}
 
       {/* pagination section */}
       {/* <div className="flex justify-center mt-6">

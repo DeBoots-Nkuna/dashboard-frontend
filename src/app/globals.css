@@ -18,3 +18,7 @@
     font-family: 'Lato', sans-serif;
   }
 }
+
+.load-container {
+  min-height: calc(100vh - 80px);
+}

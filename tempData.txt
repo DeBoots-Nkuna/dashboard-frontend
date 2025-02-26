@@ -30,3 +30,29 @@
         ))}
       </div>
     </Suspense>
+
+
+
+     <div className="mb-6 space-x-2">
+        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
+          Display All
+        </button>
+        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
+          Agriculture
+        </button>
+        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
+          Leadership
+        </button>
+        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
+          Climate Change
+        </button>
+        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
+          Fisheries
+        </button>
+        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
+          Biodiversity
+        </button>
+        <button className="bg-gray-200 text-gray-700 px-3 py-1 rounded hover:bg-gray-300 mb-4">
+          Nutrition
+        </button>
+      </div>
