@@ -610,6 +610,31 @@ export default function UploadData() {
 
               //parsing the array into the data object
               data[fieldName] = dashboardUsage;
+            }
+            //communication field to extract indicator's image if provided
+            else if (fieldName === 'Communication Details') {
+              //creating a temp container to parse the html
+              const tempComDiv = document.createElement('div');
+              tempComDiv.innerHTML = cellContent;
+              const paragraphs = tempComDiv.querySelectorAll('p');
+
+              //initializing variable to store indicator image
+              let extractedImg = '';
+              paragraphs.forEach((p) => {
+                //checking if p element contains img element
+                const imgEl = p.querySelector('img');
+
+                //if statement
+                if (imgEl) {
+                  extractedImg = imgEl.src;
+                }
+              });
+
+              //saving the plain text for communication details
+              data[fieldName] = tempComDiv.innerText.trim();
+
+              //saving image collected
+              data['Indicator Image'] = extractedImg;
             } else {
               data[fieldName] = cellText.trim();
             }

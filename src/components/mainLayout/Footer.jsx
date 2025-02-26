@@ -1,6 +1,13 @@
 'use client';
+import React from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  //hiding global footer from specified route
+  if (pathname.startsWith('/upload')) return null;
+
   return (
     <footer className="bg-customNavyTeal text-white py-4 h-20">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">

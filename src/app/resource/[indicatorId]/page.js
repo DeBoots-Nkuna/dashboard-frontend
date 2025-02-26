@@ -38,12 +38,22 @@ export default async function IndicatorDetailedPage({ params }) {
 
       {/* image placeholder */}
       <div className="relative w-1/2 h-64 bg-gray-300 mb-8 mx-auto">
-        <Image
-          src={defaultImg}
-          alt="default-image-placeholder"
-          fill
-          className="object-cover"
-        />
+        {indicator.indicatorImage ? (
+          <Image
+            src={indicator.indicatorImage}
+            alt="indicator-image"
+            fill
+            unoptimized
+            className="object-cover"
+          />
+        ) : (
+          <Image
+            src={defaultImg}
+            alt="placeholder"
+            fill
+            className="object-cover"
+          />
+        )}
       </div>
 
       {/* organisation details */}

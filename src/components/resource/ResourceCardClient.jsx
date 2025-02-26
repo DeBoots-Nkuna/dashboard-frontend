@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import imagePlaceHolder from '@/assets/default-image.png';
 import Loader from '../loading/Loader';
+import ErrorDisplay from '../error/ErrorDisplay';
 
 export default function ResourceCardClient({ activeFilter }) {
   //states
@@ -45,7 +46,7 @@ export default function ResourceCardClient({ activeFilter }) {
         response.data && Array.isArray(response.data) ? response.data : [];
       setIndicators(data);
     } catch (err) {
-      setError('Error fetching data.');
+      setError('An Error occurred while fetching data.');
       console.error(err);
     } finally {
       setLoading(false);
@@ -62,7 +63,12 @@ export default function ResourceCardClient({ activeFilter }) {
   }
 
   if (error) {
-    return <p className="text-center text-red-500">{error}</p>;
+    return (
+      <ErrorDisplay
+        message={error}
+        onRetry={() => fetchIndicators(activeFilter)}
+      />
+    );
   }
 
   //display when there are no returned indicators
@@ -77,9 +83,10 @@ export default function ResourceCardClient({ activeFilter }) {
   //displayed when indicator data is empty and display all is selected
   if (!loading && indicators.length === 0 && activeFilter === 'Display all') {
     return (
-      <div className="text-center text-gray-700 py-8">
-        <p>No Indicators available.</p>
-      </div>
+      <ErrorDisplay
+        message="No indicators available."
+        onRetry={() => fetchIndicators(activeFilter)}
+      />
     );
   }
 
@@ -90,13 +97,23 @@ export default function ResourceCardClient({ activeFilter }) {
           key={indicator.id}
           className="bg-white border border-gray-200 rounded p-4"
         >
-          <div className="relative h-32 w-full bg-gray-300 mb-3">
-            <Image
-              src={imagePlaceHolder}
-              alt="placeholder"
-              fill
-              className="object-cover"
-            />
+          <div className="relative h-32 w-full bg-gray-300 overflow-hidden">
+            {indicator.indicatorImage ? (
+              <Image
+                src={indicator.indicatorImage}
+                alt="indicator-image"
+                fill
+                unoptimized
+                className="object-cover"
+              />
+            ) : (
+              <Image
+                src={imagePlaceHolder}
+                alt="placeholder"
+                fill
+                className="object-cover"
+              />
+            )}
           </div>
           <h2 className="text-xl font-bold">
             {indicator.organisationFullName}
