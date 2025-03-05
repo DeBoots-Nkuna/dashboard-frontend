@@ -7,6 +7,7 @@ export default {
   ],
   theme: {
     extend: {
+      darkMode: 'class',
       colors: {
         customTealWhite: '#009e91',
         customNavyTeal: '#006170',

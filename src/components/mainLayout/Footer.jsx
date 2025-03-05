@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
 import { usePathname } from 'next/navigation';
+import logoImage from '@/assets/geda-logo.png';
+import Image from 'next/image';
 
 export default function Footer() {
   const pathname = usePathname();
@@ -10,7 +12,13 @@ export default function Footer() {
 
   return (
     <footer className="bg-customNavyTeal text-white py-4 h-20">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+      {/* image  */}
+      <div className="container mx-auto flex flex-col items-center">
+        <div className="mb-1">
+          <Image src={logoImage} alt="geda-logo" width={50} height={50} />
+        </div>
+      </div>
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center ">
         <p className="text-sm">&copy; 2025 Website. All rights reserved</p>
 
         <div className="flex space-x-4 mt-2 md:mt-0">
@@ -27,10 +35,10 @@ export default function Footer() {
         </div>
 
         <div className="flex space-x-4 mt-2 md:mt-0">
-          <a href="/terms" className="text-sm" target="_blank">
+          <a href="" className="text-sm" target="_blank">
             Terms &amp; Conditions
           </a>
-          <a href="/privacy" className="text-sm" target="_blank">
+          <a href="" className="text-sm" target="_blank">
             Privacy Policy
           </a>
         </div>

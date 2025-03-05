@@ -118,12 +118,12 @@ export default function ResourceCardClient({ activeFilter }) {
           <h2 className="text-xl font-bold">
             {indicator.organisationFullName}
           </h2>
-          <p className="text-sm text-gray-600">
+          <p className="text-md text-gray-600">
             {indicator.indicatorShortName}
           </p>
           <Link
             href={`/resource/${indicator.id}`}
-            className="text-teal-600 mt-2 inline-block"
+            className="text-teal-600 mt-2 inline-block hover:text-teal-500 font-semibold"
           >
             Read More
           </Link>

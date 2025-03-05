@@ -17,4 +17,69 @@
   p {
     font-family: 'Lato', sans-serif;
   }
+
+  h1.custom-heading {
+    @apply text-4xl font-bold;
+    background: linear-gradient(to right, #009e91, #ade0db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* custom paragraphs */
+  /* Custom paragraph style */
+  /* p.custom-paragraph {
+    @apply text-base text-white;
+  } */
+
+  p.hero-paragraph {
+    color: black;
+  }
+
+  p.home-paragraph {
+    color: white;
+  }
+}
+
+/* Component styles for buttons */
+@layer components {
+  /* Base button style */
+  .btn {
+    @apply px-4 py-2 rounded transition-colors duration-200;
+    background-color: #14b8a6;
+    color: white;
+  }
+  /* Hover state for buttons */
+  .btn:hover {
+    background-color: #0d9488;
+  }
+  /* Active state (when pressed) */
+  .btn:active {
+    background-color: #0c7a6e;
+  }
+  /* Focus state (for accessibility) */
+  .btn:focus {
+    @apply outline-none ring-2 ring-teal-500;
+  }
+  /* Custom "active" class to mark a selected button */
+  .btn-active {
+    @apply bg-teal-700 border border-teal-500;
+  }
+
+  .dark .hero-bg {
+    background-color: #009e91;
+    color: white;
+  }
+}
+
+/* dark mode theme color */
+html.dark body {
+  background-color: #006170;
+}
+
+/* .bg-customNavyTeal {
+  background-color: #1e3a8a;
+} */
+
+.dark .bg-customNavyTeal {
+  background-color: #0c7a6e;
 }

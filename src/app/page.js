@@ -4,10 +4,10 @@ export default function Home() {
     <section className="container mx-auto py-8 px-4">
       {/* hero section */}
       <div className="bg-customNavyTeal  rounded text-white mb-8 p-4">
-        <h1 className="text-4xl font-bold text-center bg-gradient-to-r from-customTextNavy to-customTealWhite bg-clip-text text-transparent mb-4 rounded">
+        <h1 className="text-4xl font-bold text-center custom-heading mb-4 rounded">
           GEDA Dashboard
         </h1>
-        <p className="mb-4 text-xl text-center text-customTextNavy">
+        <p className="mb-4 text-xl text-center custom-paragraph">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
           repellat id voluptates earum, suscipit odio animi dolorem eveniet quos
           cum quas beatae sit voluptate distinctio harum, aspernatur odit
@@ -20,7 +20,7 @@ export default function Home() {
       </div>
 
       {/* additional information */}
-      <div className="rounded text-black mt-8 text-lg">
+      <div className="rounded text-black mt-8 text-lg home-paragraph">
         <p className="mb-4 ">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta,
           neque. Repellendus, id fuga ullam maiores voluptatibus harum obcaecati

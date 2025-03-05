@@ -1,10 +1,10 @@
-import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import defaultImg from '@/assets/default-image.png';
+import Link from 'next/link';
+import IndicatorActions from '@/components/actions/IndicatorActions';
 
 export default async function IndicatorDetailedPage({ params }) {
   const { indicatorId } = await params;
-
   //fetching the indicator details from the backend
 
   const res = await fetch(
@@ -47,7 +47,7 @@ export default async function IndicatorDetailedPage({ params }) {
             className="object-cover"
           />
         ) : (
-          <image
+          <Image
             src={defaultImg}
             alt="default image placeholder"
             fill
@@ -101,7 +101,7 @@ export default async function IndicatorDetailedPage({ params }) {
             <span className="font-semibold">Indicator Footprint:</span>{' '}
             {Array.isArray(indicatorFootprint)
               ? indicatorFootprint.join(', ')
-              : indicator.indicatorFootprint}
+              : 'Not indicated'}
           </p>
           <p className="mb-2">
             <span className="font-semibold">Start Year:</span>{' '}
@@ -124,6 +124,9 @@ export default async function IndicatorDetailedPage({ params }) {
           {indicator.communicationDetails}
         </p>
       </div>
+
+      {/* update and delete button */}
+      <IndicatorActions id={indicator.id} />
     </div>
   );
 }

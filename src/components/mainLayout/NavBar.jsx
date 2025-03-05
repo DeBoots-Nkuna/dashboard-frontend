@@ -3,13 +3,13 @@ import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import logoImg from '@/assets/geda-logo.png';
-import { DocumentIcon } from '@heroicons/react';
+import { useTheme } from 'next-themes';
+
 export default function NavBar() {
   const pathname = usePathname();
-
   //hiding global footer from specified route
   if (pathname.startsWith('/upload')) return null;
-
+  const { theme, setTheme } = useTheme();
   return (
     <>
       <nav className="bg-customNavyTeal text-white p-4">
@@ -17,7 +17,13 @@ export default function NavBar() {
           {/* Left logo title */}
           <div className="font-bold text-xl">
             <Link href="/">
-              <Image src={logoImg} width={150} height={150} alt="geda-logo" />
+              <Image
+                src={logoImg}
+                width={150}
+                height={150}
+                alt="geda-logo"
+                priority
+              />
             </Link>
           </div>
 
@@ -61,6 +67,13 @@ export default function NavBar() {
 
               <span>Upload Data</span>
             </Link>
+            {/* Theme toggle button */}
+            {/* <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="px-2 py-1 border border-white rounded hover:bg-gray-700 transition-colors"
+            >
+              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            </button> */}
           </div>
         </div>
       </nav>
